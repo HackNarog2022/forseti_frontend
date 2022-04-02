@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -26,6 +26,10 @@ import { msalConfig, loginRequest, protectedResources } from './auth.config';
 import { MainComponent } from './main/main.component';
 import { RequestsHistoryComponent } from './requests-history/requests-history.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {RequestFormComponent} from "./request-form/request-form.component";
+import {MatSelectModule} from "@angular/material/select";
+import {MatNativeDateModule} from "@angular/material/core";
 
 /**
  * Here we pass the configuration parameters to create an MSAL instance.
@@ -68,6 +72,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     AppComponent,
     MainComponent,
     RequestsHistoryComponent,
+    RequestFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,7 +90,11 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     HttpClientModule,
     FormsModule,
     MsalModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     {
@@ -108,6 +117,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MsalService,
     MsalGuard,
     MsalBroadcastService,
+    MatDatepickerModule
   ],
   bootstrap: [AppComponent, MsalRedirectComponent]
 })
