@@ -8,11 +8,11 @@
  import { LogLevel, Configuration, BrowserCacheLocation } from '@azure/msal-browser';
 
  const isIE = window.navigator.userAgent.indexOf("MSIE ") > -1 || window.navigator.userAgent.indexOf("Trident/") > -1;
- 
+
  /**
-  * Configuration object to be passed to MSAL instance on creation. 
+  * Configuration object to be passed to MSAL instance on creation.
   * For a full list of MSAL.js configuration parameters, visit:
-  * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md 
+  * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md
   */
  export const msalConfig: Configuration = {
    auth: {
@@ -35,22 +35,22 @@
      }
    }
  }
- 
+
  /**
   * Add here the endpoints and scopes when obtaining an access token for protected web APIs. For more information, see:
   * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/resources-and-scopes.md
   */
  export const protectedResources = {
    todoListApi: {
-     endpoint: "https://localhost:44351/api/todolist",
+     endpoint: "/api/requests",
      scopes: ["https://hacknarog2022.onmicrosoft.com/api/access_as_user"],
    },
  }
- 
+
  /**
   * Scopes you add here will be prompted for user consent during sign-in.
   * By default, MSAL.js will add OIDC scopes (openid, profile, email) to any login request.
-  * For more information about OIDC scopes, visit: 
+  * For more information about OIDC scopes, visit:
   * https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes
   */
  export const loginRequest = {
