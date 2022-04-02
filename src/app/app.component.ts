@@ -1,8 +1,9 @@
-import { Component, Inject } from '@angular/core';
-import { MsalBroadcastService, MsalGuardConfiguration, MsalService, MSAL_GUARD_CONFIG } from '@azure/msal-angular';
-import { InteractionType, PopupRequest, AuthenticationResult, RedirectRequest, InteractionStatus } from '@azure/msal-browser';
-import { filter, takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import {Component, Inject} from '@angular/core';
+import {MSAL_GUARD_CONFIG, MsalBroadcastService, MsalGuardConfiguration, MsalService} from '@azure/msal-angular';
+import {InteractionStatus, RedirectRequest} from '@azure/msal-browser';
+import {filter, takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
+import {RequestsService} from "./services/requests.service";
 
 @Component({
   selector: 'app-root',
@@ -18,11 +19,14 @@ export class AppComponent {
   constructor(
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
-    private msalBroadcastService: MsalBroadcastService
-  ) { }
+    private msalBroadcastService: MsalBroadcastService,
+    private requestsService: RequestsService
+  ) {
+  }
 
   ngOnInit(): void {
     this.isIframe = window !== window.parent && !window.opener;
+
 
     /**
      * You can subscribe to MSAL events as shown below. For more info,
@@ -46,21 +50,27 @@ export class AppComponent {
   login() {
 
     if (this.msalGuardConfig.authRequest) {
-      this.authService.loginRedirect({ ...this.msalGuardConfig.authRequest } as RedirectRequest);
+      this.authService.loginRedirect({...this.msalGuardConfig.authRequest} as RedirectRequest);
     } else {
       this.authService.loginRedirect();
     }
+  }
+
+  requests() {
+    console.log(this.requestsService.getAllRequests().subscribe(
+      sa => console.log(sa)
+    ))
   }
 
   logout() {
     this.authService.logout();
   }
 
-    // unsubscribe to events when component is destroyed
-    ngOnDestroy(): void {
-      this._destroying$.next(undefined);
-      this._destroying$.complete();
-    }
+  // unsubscribe to events when component is destroyed
+  ngOnDestroy(): void {
+    this._destroying$.next(undefined);
+    this._destroying$.complete();
+  }
 
 }
 
