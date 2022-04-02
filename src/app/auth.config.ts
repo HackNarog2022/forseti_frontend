@@ -42,7 +42,7 @@
   */
  export const protectedResources = {
    todoListApi: {
-     endpoint: "/api/requests",
+     endpoint: "/api",
      scopes: ["https://hacknarog2022.onmicrosoft.com/api/access_as_user"],
    },
  }
