@@ -2,6 +2,7 @@ import {User} from "./user";
 import {Category} from "./category";
 
 export interface Request {
+  requestId: string
   user: User,
   category: Category,
   freeText: string,
