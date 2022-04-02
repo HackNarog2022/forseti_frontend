@@ -7,5 +7,5 @@ export const routes: Routes = [
   {path: 'main', component: MainComponent},
   {path: 'new-request', component: RequestFormComponent},
   {path: 'requests', component: RequestsHistoryComponent},
-  {path: '', redirectTo: '/main', pathMatch: 'full'},
+  // {path: '', redirectTo: '/main', pathMatch: 'full'},
 ];
