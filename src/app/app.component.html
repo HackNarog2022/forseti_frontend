@@ -2,15 +2,15 @@
 
   <div class="toolbar-spacer"></div>
 
-  <a mat-button routerLink='main' routerLinkActive='active'><h1>Forseti</h1></a>
+  <a mat-button  routerLink='main' routerLinkActive='active'><h1 style="font-family: norse-fat">Forseti</h1></a>
   <span class="example-fill-remaining-space"></span>
 
   <button mat-raised-button *ngIf="!loginDisplay" (click)="login()">Login</button>
-  <button class=button_right mat-raised-button color="accent" *ngIf="loginDisplay" (click)="logout()">Logout</button>
+  <button style="font-family: norse-fat; " class=button_right mat-raised-button color="accent" *ngIf="loginDisplay" (click)="logout()">Logout</button>
 </mat-toolbar>
 
 <div class="center-align">
-  <button mat-raised-button  (click)="requests()">Login</button>
+<!--  <button mat-raised-button  (click)="requests()">Login</button>-->
   <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
   <router-outlet *ngIf="loginDisplay"></router-outlet>
 </div>
