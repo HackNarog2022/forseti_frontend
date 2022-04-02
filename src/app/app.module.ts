@@ -30,6 +30,8 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {RequestFormComponent} from "./request-form/request-form.component";
 import {MatSelectModule} from "@angular/material/select";
 import {MatNativeDateModule} from "@angular/material/core";
+import { FooterComponent } from './footer/footer.component';
+import {FlexModule} from "@angular/flex-layout";
 
 /**
  * Here we pass the configuration parameters to create an MSAL instance.
@@ -73,6 +75,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MainComponent,
     RequestsHistoryComponent,
     RequestFormComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,7 +97,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     ReactiveFormsModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    FlexModule
   ],
   providers: [
     {
