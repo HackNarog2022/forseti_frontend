@@ -10,9 +10,38 @@ import {MatPaginator} from "@angular/material/paginator";
   styleUrls: ['./requests-history.component.scss']
 })
 export class RequestsHistoryComponent implements OnInit {
-  private requests: Request[] = [];
+  private requests: Request[] = [{
+    requestId: "62488d4eb75f3f2e56ac8905",
+    user: {
+      id: "1"
+    },
+    category: {
+      name: "Football"
+    },
+    freeText: "lalallala",
+    place: "online",
+    expectedExpertise: 1,
+    declaredExpertise: 1,
+    startDate: new Date(),
+    endDate: new Date()
+  },
+    {
+      requestId: "62488d4eb75f3f2e56ac8905",
+      user: {
+        id: "2"
+      },
+      category: {
+        name: "Books"
+      },
+      freeText: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum",
+      place: "Kraków",
+      expectedExpertise: 2,
+      declaredExpertise: 1,
+      startDate: new Date(),
+      endDate: new Date()
+    }];
   dataSource = new MatTableDataSource<Request>(this.requests);
-  displayedColumns: string[] = ['category', 'place', 'freeText', 'startDate', 'endDate', 'expectedExpertise', 'declaredExpertise'];
+  displayedColumns: string[] = ['category', 'place',  'startDate', 'endDate', 'expectedExpertise', 'declaredExpertise', 'freeText'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 
@@ -24,5 +53,5 @@ export class RequestsHistoryComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
+
