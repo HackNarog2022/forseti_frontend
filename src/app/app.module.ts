@@ -33,6 +33,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import { FooterComponent } from './footer/footer.component';
 import {FlexModule} from "@angular/flex-layout";
 import { EntryComponent } from './entry/entry.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 /**
  * Here we pass the configuration parameters to create an MSAL instance.
@@ -100,7 +101,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    FlexModule
+    FlexModule,
+    MatSnackBarModule
   ],
   providers: [
     {
