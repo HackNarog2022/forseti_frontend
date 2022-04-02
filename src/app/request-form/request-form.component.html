@@ -1,59 +1,61 @@
-<div class="example-container">
-  <div class="form-container">
-    <form [formGroup]="requestForm" (submit)="submit()">
-      <mat-form-field class="form-field" appearance="outline">
-        <mat-label>User name</mat-label>
-        <input matInput formControlName="userName" required>
-      </mat-form-field>
-      <mat-form-field class="form-field">
-        <mat-label>Category</mat-label>
-        <mat-select formControlName="category">
-          <mat-option *ngFor="let category of possibleCategories" [value]="category">
-            {{ category }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="form-field" appearance="outline">
-        <mat-label>Free Text</mat-label>
-        <input matInput formControlName="freeText" required>
-      </mat-form-field>
-      <mat-form-field class="form-field" appearance="outline">
-        <mat-label>Place</mat-label>
-        <input matInput formControlName="place" required>
-      </mat-form-field>
-      <mat-form-field class="form-field">
-        <mat-label>Expected expertise</mat-label>
-        <mat-select formControlName="expectedExpertise">
-          <mat-option *ngFor="let possibleExpertise of possibleExpertises" [value]="possibleExpertise">
-            {{ possibleExpertise }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="form-field">
-        <mat-label>Declare expertise</mat-label>
-        <mat-select formControlName="declaredExpertise">
-          <mat-option *ngFor="let possibleExpertise of possibleExpertises" [value]="possibleExpertise">
-            {{ possibleExpertise }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+<div class="container" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="space-around end">
+  <mat-card>
+    <div style="text-align:center;">
+      <mat-card-title>New meeting details</mat-card-title>
+    </div>
+    <div class="example-container">
+      <div class="form-container">
+        <form [formGroup]="requestForm" (submit)="submit()">
+          <mat-form-field class="form-field">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="category">
+              <mat-option *ngFor="let category of possibleCategories" [value]="category">
+                {{ category }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>What would you like to talk about?</mat-label>
+            <input matInput formControlName="freeText" required>
+          </mat-form-field>
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Place</mat-label>
+            <input matInput formControlName="place" required>
+          </mat-form-field>
+          <mat-form-field class="form-field">
+            <mat-label>Expected expertise</mat-label>
+            <mat-select formControlName="expectedExpertise">
+              <mat-option *ngFor="let possibleExpertise of possibleExpertises" [value]="possibleExpertise">
+                {{ possibleExpertise }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="form-field">
+            <mat-label>Declare expertise</mat-label>
+            <mat-select formControlName="declaredExpertise">
+              <mat-option *ngFor="let possibleExpertise of possibleExpertises" [value]="possibleExpertise">
+                {{ possibleExpertise }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
-      <mat-form-field class="form-field" appearance="outline">
-        <mat-label>Start date</mat-label>
-        <input matInput [matDatepicker]="pickerStartDate" formControlName="startDate" required>
-        <mat-datepicker-toggle matSuffix [for]="pickerStartDate"></mat-datepicker-toggle>
-        <mat-datepicker #pickerStartDate></mat-datepicker>
-      </mat-form-field>
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Start date</mat-label>
+            <input matInput [matDatepicker]="pickerStartDate" formControlName="startDate" required>
+            <mat-datepicker-toggle matSuffix [for]="pickerStartDate"></mat-datepicker-toggle>
+            <mat-datepicker #pickerStartDate></mat-datepicker>
+          </mat-form-field>
 
-      <mat-form-field class="form-field" appearance="outline">
-        <mat-label>End date</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="endDate" required>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>End date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="endDate" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit">Log In</button>
-    </form>
-  </div>
+          <button mat-raised-button color="primary" type="submit">Let's go!</button>
+        </form>
+      </div>
+    </div>
+  </mat-card>
 </div>
-
