@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CategoryService} from "../services/category.service";
 import {Category} from "../shared/category";
 import {RequestsService} from "../services/requests.service";
+import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-request-form',
@@ -18,7 +20,9 @@ export class RequestFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private categoryService: CategoryService,
-    private requestsService: RequestsService
+    private requestsService: RequestsService,
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {
   }
 
@@ -59,7 +63,11 @@ export class RequestFormComponent implements OnInit {
       endDate: this.requestForm.value.endDate
     };
     console.log('Saving request:', request)
-    this.requestsService.createRequest(request).subscribe()
+    this.requestsService.createRequest(request).subscribe(() => {
+      const navigationDetails: string[] = ['/'];
+      this.snackBar.open('Successfully saved request!')
+      this.router.navigate(navigationDetails)
+    })
   }
 
 }
