@@ -9,10 +9,11 @@
   <button style="font-family: norse-fat; " class=button_right mat-raised-button color="accent" *ngIf="loginDisplay" (click)="logout()">Logout</button>
 </mat-toolbar>
 
-<div class="center-align">
+<div class="center-align bg">
 <!--  <button mat-raised-button  (click)="requests()">Tests User</button>-->
   <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
   <router-outlet *ngIf="loginDisplay"></router-outlet>
+  <app-entry *ngIf="!loginDisplay"></app-entry>
 </div>
 <app-footer></app-footer>
 

@@ -27,3 +27,19 @@ body { margin: 0; font-family: norse, sans-serif; }
   font-family: norse-fat;
   src: url(assets/NorseBold-2Kge.otf) format("opentype");
 }
+
+.bg
+{
+  /* The image used */
+  background-image: url("assets/forest.jpg");
+
+  /* Full height */
+  height: 100vh; /* For 100% screen height */
+  width:  100vw; /* For 100% screen width */
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  //background;
+}
