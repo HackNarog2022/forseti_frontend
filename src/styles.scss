@@ -2,7 +2,12 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
+.h1{
+  font-family: norse-fat
+}
+* {
+  font-family:  norse;
+}
 .container {
   margin: 20px;
   //display: flex;
@@ -10,4 +15,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .inside-card {
   margin: 20px;
+}
+
+
+@font-face {
+  font-family: norse;
+  src: url(assets/Norse-KaWl.otf) format("opentype");
+}
+
+@font-face {
+  font-family: norse-fat;
+  src: url(assets/NorseBold-2Kge.otf) format("opentype");
 }
