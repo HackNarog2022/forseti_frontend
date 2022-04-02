@@ -24,6 +24,8 @@ import { MsalGuard, MsalInterceptor, MsalBroadcastService, MsalInterceptorConfig
 
 import { msalConfig, loginRequest, protectedResources } from './auth.config';
 import { MainComponent } from './main/main.component';
+import { RequestsHistoryComponent } from './requests-history/requests-history.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 /**
  * Here we pass the configuration parameters to create an MSAL instance.
@@ -65,6 +67,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   declarations: [
     AppComponent,
     MainComponent,
+    RequestsHistoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,7 +84,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MatIconModule,
     HttpClientModule,
     FormsModule,
-    MsalModule
+    MsalModule,
+    MatPaginatorModule
   ],
   providers: [
     {
