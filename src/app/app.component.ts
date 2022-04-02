@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MSAL_GUARD_CONFIG, MsalBroadcastService, MsalGuardConfiguration, MsalService} from '@azure/msal-angular';
-import {InteractionStatus, RedirectRequest} from '@azure/msal-browser';
+import {EventMessage, EventType, InteractionStatus, RedirectRequest} from '@azure/msal-browser';
 import {filter, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {RequestsService} from "./services/requests.service";
@@ -27,11 +27,21 @@ export class AppComponent {
   ngOnInit(): void {
     this.isIframe = window !== window.parent && !window.opener;
 
+    this.setLoginDisplay();
 
-    /**
-     * You can subscribe to MSAL events as shown below. For more info,
-     * visit: https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/docs/v2-docs/events.md
-     */
+    this.authService.instance.enableAccountStorageEvents(); // Optional - This will enable ACCOUNT_ADDED and ACCOUNT_REMOVED events emitted when a user logs in or out of another tab or window
+    this.msalBroadcastService.msalSubject$
+      .pipe(
+        filter((msg: EventMessage) => msg.eventType === EventType.ACCOUNT_ADDED || msg.eventType === EventType.ACCOUNT_REMOVED),
+      )
+      .subscribe((result: EventMessage) => {
+        if (this.authService.instance.getAllAccounts().length === 0) {
+          window.location.pathname = "/";
+        } else {
+          this.setLoginDisplay();
+        }
+      });
+    
     this.msalBroadcastService.inProgress$
       .pipe(
         filter((status: InteractionStatus) => status === InteractionStatus.None),
@@ -39,13 +49,27 @@ export class AppComponent {
       )
       .subscribe(() => {
         this.setLoginDisplay();
-      });
+        this.checkAndSetActiveAccount();
+      })
   }
 
   setLoginDisplay() {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
   }
 
+  checkAndSetActiveAccount(){
+    /**
+     * If no active account set but there are accounts signed in, sets first account to active account
+     * To use active account set here, subscribe to inProgress$ first in your component
+     * Note: Basic usage demonstrated. Your app may require more complicated account selection logic
+     */
+    let activeAccount = this.authService.instance.getActiveAccount();
+
+    if (!activeAccount && this.authService.instance.getAllAccounts().length > 0) {
+      let accounts = this.authService.instance.getAllAccounts();
+      this.authService.instance.setActiveAccount(accounts[0]);
+    }
+  }
 
   login() {
 
@@ -57,9 +81,9 @@ export class AppComponent {
   }
 
   requests() {
-    console.log(this.requestsService.getAllRequests().subscribe(
+    this.requestsService.getAllRequests().subscribe(
       sa => console.log(sa)
-    ))
+    )
   }
 
   logout() {
