@@ -10,7 +10,7 @@
             <mat-label>Category</mat-label>
             <mat-select formControlName="category">
               <mat-option *ngFor="let category of possibleCategories" [value]="category">
-                {{ category }}
+                {{ category.name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
