@@ -10,8 +10,9 @@ import { Subject } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'Forseti';
   loginDisplay = false;
+  isIframe = false;
   private readonly _destroying$ = new Subject<void>();
 
   constructor(
@@ -21,6 +22,7 @@ export class AppComponent {
   ) { }
 
   ngOnInit(): void {
+    this.isIframe = window !== window.parent && !window.opener;
 
     /**
      * You can subscribe to MSAL events as shown below. For more info,
