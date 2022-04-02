@@ -2,24 +2,22 @@
 
   <div class="toolbar-spacer"></div>
 
-  <a mat-button routerLink='main' routerLinkActive='active'>Forseti</a>
+  <a mat-button routerLink='main' routerLinkActive='active'><h1>Forseti</h1></a>
   <span class="example-fill-remaining-space"></span>
 
   <button mat-raised-button *ngIf="!loginDisplay" (click)="login()">Login</button>
-  <button class=button_login mat-raised-button color="accent" *ngIf="loginDisplay" (click)="logout()">Logout</button>
+  <button class=button_right mat-raised-button color="accent" *ngIf="loginDisplay" (click)="logout()">Logout</button>
 </mat-toolbar>
 
-<div class="container">
+<div class="center-align">
   <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
-  <router-outlet *ngIf="!isIframe"></router-outlet>
+  <router-outlet *ngIf="loginDisplay"></router-outlet>
 </div>
 
 <footer *ngIf="loginDisplay">
-
-  <div class="container" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="space-around center">
+  <div class="center-align" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="space-around center">
     <mat-card>
       <mat-card-content> Go beyond your reality</mat-card-content>
     </mat-card>
-
   </div>
 </footer>
