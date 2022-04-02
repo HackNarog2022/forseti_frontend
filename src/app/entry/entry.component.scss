@@ -1,0 +1,21 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  //width: 50%;
+}
+
+.center-text{
+  font-family: norse;
+  display: block;
+  text-align: center;
+  line-height: 150%;
+  font-size: 5.5em;
+}
