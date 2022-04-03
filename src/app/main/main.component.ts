@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Request} from "../shared/request";
 import {Meeting} from "../shared/meeting";
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { MeetingService } from '../services/meeting-service.service';
+import {Router} from '@angular/router';
+import {Observable} from 'rxjs';
+import {MeetingService} from '../services/meeting-service.service';
+import {MsalService} from "@azure/msal-angular";
 
 
 @Component({
@@ -15,23 +16,23 @@ export class MainComponent implements OnInit {
 
   requests: Request[] = [
     {
-    requestId: "62488d4eb75f3f2e56ac8905",
-    user: {
-      id: "1",
-      email: "dadasd@dsadas.pl"
+      requestId: "62488d4eb75f3f2e56ac8905",
+      user: {
+        id: "1",
+        email: "dadasd@dsadas.pl"
+      },
+      category: {
+        name: "Football",
+        inspirations: []
+      },
+      freeText: "lalallala",
+      place: "online",
+      expectedExpertise: "Beginner",
+      declaredExpertise: "Expert",
+      startDate: new Date(),
+      endDate: new Date(),
+      isNegative: false
     },
-    category: {
-      name: "Football",
-      inspirations: []
-    },
-    freeText: "lalallala",
-    place: "online",
-    expectedExpertise: "Beginner",
-    declaredExpertise: "Expert",
-    startDate: new Date(),
-    endDate: new Date(),
-    isNegative: false
-  },
     {
       requestId: "62488d4eb75f3f2e56ac8905",
       user: {
@@ -67,7 +68,7 @@ export class MainComponent implements OnInit {
       startDate: new Date(),
       endDate: new Date(),
       isNegative: true
-    },    {
+    }, {
       requestId: "62488d4eb75f3f2e56ac8905",
       user: {
         id: "1",
@@ -120,7 +121,7 @@ export class MainComponent implements OnInit {
       startDate: new Date(),
       endDate: new Date(),
       isNegative: false
-    },    {
+    }, {
       requestId: "62488d4eb75f3f2e56ac8905",
       user: {
         id: "1",
@@ -137,7 +138,7 @@ export class MainComponent implements OnInit {
       startDate: new Date(),
       endDate: new Date(),
       isNegative: false
-    },    {
+    }, {
       requestId: "62488d4eb75f3f2e56ac8905",
       user: {
         id: "1",
@@ -154,7 +155,7 @@ export class MainComponent implements OnInit {
       startDate: new Date(),
       endDate: new Date(),
       isNegative: false
-    },    {
+    }, {
       requestId: "62488d4eb75f3f2e56ac8905",
       user: {
         id: "1",
@@ -171,7 +172,7 @@ export class MainComponent implements OnInit {
       startDate: new Date(),
       endDate: new Date(),
       isNegative: false
-    },    {
+    }, {
       requestId: "62488d4eb75f3f2e56ac8905",
       user: {
         id: "1",
@@ -213,7 +214,7 @@ export class MainComponent implements OnInit {
 
   pastMeetings$: Observable<Meeting[]> | undefined
 
-  constructor(private router: Router, private meetingService: MeetingService) {
+  constructor(private router: Router, private meetingService: MeetingService, private authService: MsalService) {
   }
 
   ngOnInit(): void {
@@ -226,4 +227,11 @@ export class MainComponent implements OnInit {
     this.router.navigate(["/meeting-details/", meeting.id])
   }
 
+  getBuddyEmail(meeting: Meeting): string {
+    const currentEmail = this.authService.instance.getActiveAccount()?.username ?? 'unknown'
+    const request = meeting.requests.filter(m => m.user.email != currentEmail).pop()
+    console.log(request)
+    // @ts-ignore
+    return request.user.email;
+  }
 }
