@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Request} from "../shared/request";
 import {Meeting} from "../shared/meeting";
-import {Category} from "../shared/category";
-import {Place} from "../shared/place";
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MeetingService } from '../services/meeting-service.service';
+
 
 @Component({
   selector: 'app-main',
@@ -14,10 +13,12 @@ import { MeetingService } from '../services/meeting-service.service';
 })
 export class MainComponent implements OnInit {
 
-  requests: Request[] = [{
+  requests: Request[] = [
+    {
     requestId: "62488d4eb75f3f2e56ac8905",
     user: {
-      id: "1"
+      id: "1",
+      email: "dadasd@dsadas.pl"
     },
     category: {
       name: "Football",
@@ -28,12 +29,171 @@ export class MainComponent implements OnInit {
     expectedExpertise: "Beginner",
     declaredExpertise: "Expert",
     startDate: new Date(),
-    endDate: new Date()
+    endDate: new Date(),
+    isNegative: false
   },
     {
       requestId: "62488d4eb75f3f2e56ac8905",
       user: {
-        id: "2"
+        id: "1",
+        email: "dadasd@dsadas.pl"
+      },
+      category: {
+        name: "Football",
+        inspirations: []
+      },
+      freeText: "lalallala",
+      place: "online",
+      expectedExpertise: "Beginner",
+      declaredExpertise: "Expert",
+      startDate: new Date(),
+      endDate: new Date(),
+      isNegative: false
+    },
+    {
+      requestId: "62488d4eb75f3f2e56ac8905",
+      user: {
+        id: "1",
+        email: "dadasd@dsadas.pl"
+      },
+      category: {
+        name: "Football",
+        inspirations: []
+      },
+      freeText: "lalallala",
+      place: "online",
+      expectedExpertise: "Beginner",
+      declaredExpertise: "Expert",
+      startDate: new Date(),
+      endDate: new Date(),
+      isNegative: true
+    },    {
+      requestId: "62488d4eb75f3f2e56ac8905",
+      user: {
+        id: "1",
+        email: "dadasd@dsadas.pl"
+      },
+      category: {
+        name: "Football",
+        inspirations: []
+      },
+      freeText: "lalallala",
+      place: "online",
+      expectedExpertise: "Beginner",
+      declaredExpertise: "Expert",
+      startDate: new Date(),
+      endDate: new Date(),
+      isNegative: false
+    },
+    {
+      requestId: "62488d4eb75f3f2e56ac8905",
+      user: {
+        id: "1",
+        email: "dadasd@dsadas.pl"
+      },
+      category: {
+        name: "Football",
+        inspirations: []
+      },
+      freeText: "lalallala",
+      place: "online",
+      expectedExpertise: "Beginner",
+      declaredExpertise: "Expert",
+      startDate: new Date(),
+      endDate: new Date(),
+      isNegative: false
+    },
+    {
+      requestId: "62488d4eb75f3f2e56ac8905",
+      user: {
+        id: "1",
+        email: "dadasd@dsadas.pl"
+      },
+      category: {
+        name: "Football",
+        inspirations: []
+      },
+      freeText: "lalallala",
+      place: "online",
+      expectedExpertise: "Beginner",
+      declaredExpertise: "Expert",
+      startDate: new Date(),
+      endDate: new Date(),
+      isNegative: false
+    },    {
+      requestId: "62488d4eb75f3f2e56ac8905",
+      user: {
+        id: "1",
+        email: "dadasd@dsadas.pl"
+      },
+      category: {
+        name: "Football",
+        inspirations: []
+      },
+      freeText: "lalallala",
+      place: "online",
+      expectedExpertise: "Beginner",
+      declaredExpertise: "Expert",
+      startDate: new Date(),
+      endDate: new Date(),
+      isNegative: false
+    },    {
+      requestId: "62488d4eb75f3f2e56ac8905",
+      user: {
+        id: "1",
+        email: "dadasd@dsadas.pl"
+      },
+      category: {
+        name: "Football",
+        inspirations: []
+      },
+      freeText: "lalallala",
+      place: "online",
+      expectedExpertise: "Beginner",
+      declaredExpertise: "Expert",
+      startDate: new Date(),
+      endDate: new Date(),
+      isNegative: false
+    },    {
+      requestId: "62488d4eb75f3f2e56ac8905",
+      user: {
+        id: "1",
+        email: "dadasd@dsadas.pl"
+      },
+      category: {
+        name: "Football",
+        inspirations: []
+      },
+      freeText: "lalallala",
+      place: "online",
+      expectedExpertise: "Beginner",
+      declaredExpertise: "Expert",
+      startDate: new Date(),
+      endDate: new Date(),
+      isNegative: false
+    },    {
+      requestId: "62488d4eb75f3f2e56ac8905",
+      user: {
+        id: "1",
+        email: "dadasd@dsadas.pl"
+      },
+      category: {
+        name: "Football",
+        inspirations: []
+      },
+      freeText: "lalallala",
+      place: "online",
+      expectedExpertise: "Beginner",
+      declaredExpertise: "Expert",
+      startDate: new Date(),
+      endDate: new Date(),
+      isNegative: false
+    },
+    {
+      requestId: "62488d4eb75f3f2e56ac8905",
+      user: {
+        id: "2",
+        email: "sasadsa@das.dpl"
       },
       category: {
         name: "Books",
@@ -44,7 +204,8 @@ export class MainComponent implements OnInit {
       expectedExpertise: "Beginner",
       declaredExpertise: "Expert",
       startDate: new Date(),
-      endDate: new Date()
+      endDate: new Date(),
+      isNegative: true
     }];
 
 

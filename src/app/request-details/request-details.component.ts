@@ -11,7 +11,8 @@ export class RequestDetailsComponent implements OnInit {
   request: Request = {
     requestId: "62488d4eb75f3f2e56ac8905",
     user: {
-      id: "1"
+      id: "1",
+      email: "lalal@wp.pl"
     },
     category: {
       name: "Football",
@@ -22,7 +23,8 @@ export class RequestDetailsComponent implements OnInit {
     expectedExpertise: "BEGINNER",
     declaredExpertise: "EXPERT",
     startDate: new Date(),
-    endDate: new Date()
+    endDate: new Date(),
+    isNegative: true
   };
 
   constructor() { }
