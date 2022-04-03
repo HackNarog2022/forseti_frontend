@@ -36,4 +36,12 @@ export class MeetingService {
     };
     return this.http.get<Meeting[]>('/api/notDoneUserMeetings', httpOptions);
   }
+
+  setFinished(id: string) {
+    return this.http.post('/api/setFinished/?meetingId=' + id, null);
+  }
+
+  addRating(meetingId: string, userId:string, rating: number) {
+    return this.http.post('/api/addRating/', null, {params:{meetingId, userId, rating}})
+  }
 }
