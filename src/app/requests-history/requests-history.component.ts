@@ -41,7 +41,7 @@ export class RequestsHistoryComponent implements OnInit {
       endDate: new Date()
     }];
   dataSource = new MatTableDataSource<Request>(this.requests);
-  displayedColumns: string[] = ['category', 'place',  'startDate', 'endDate', 'expectedExpertise', 'declaredExpertise', 'freeText'];
+  displayedColumns: string[] = ['category', 'place', 'startDate', 'endDate', 'expectedExpertise', 'declaredExpertise', 'freeText'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 

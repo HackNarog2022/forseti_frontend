@@ -1,15 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {Request} from "../shared/request";
 import {Meeting} from "../shared/meeting";
-import {Category} from "../shared/category";
-import {Place} from "../shared/place";
+import {Request} from "../shared/request";
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  selector: 'app-meeting-details',
+  templateUrl: './meeting-details.component.html',
+  styleUrls: ['./meeting-details.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MeetingDetailsComponent implements OnInit {
 
   requests: Request[] = [{
     requestId: "62488d4eb75f3f2e56ac8905",
@@ -42,8 +40,7 @@ export class MainComponent implements OnInit {
       endDate: new Date()
     }];
 
-
-  matchedMeetings: Meeting[] = [{
+  meeting: Meeting = {
     meetingId: '65af65s6f',
     date: new Date(),
     category: {
@@ -65,9 +62,7 @@ export class MainComponent implements OnInit {
       },
     ],
   }
-  ]
 
-  pastMeetings = this.matchedMeetings
 
   constructor() {
   }
