@@ -37,7 +37,7 @@
               <mat-list-option style="height:auto" class="" *ngFor="let request of (requests$ | async)"
                                [value]="request" (click)="openRequest(request)">
                 <span
-                  [style]="request.isNegative ? 'color:red' : null"><b>Category: {{request.category.name}}</b> <br> start date: {{request.startDate | date }}
+                  [style]="request.negative ? 'color:red' : null"><b>Category: {{request.category.name}}</b> <br> start date: {{request.startDate | date }}
                   / end date: {{request.endDate | date}}</span>
                 <hr class="dotted">
               </mat-list-option>
