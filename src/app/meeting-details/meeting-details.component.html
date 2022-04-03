@@ -50,9 +50,9 @@
             min="1"
             max="5"
             aria-label="units"
-            (input)="addRating($event)"
+            (input)="changeSliderValue($event)"
           ></mat-slider>
-          <button mat-raised-button>Submit rating</button>
+          <button mat-raised-button (click)="addRating()">Submit rating</button>
         </div>
       </mat-card>
 </div>
