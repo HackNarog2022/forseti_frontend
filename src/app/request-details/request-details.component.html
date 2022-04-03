@@ -1,17 +1,21 @@
-<div class="container" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="space-around center">
+<div style="min-width: 50vw!important;" class="container" fxLayout="column" fxLayoutGap="20px" >
   <mat-card>
     <div style="text-align:center;">
       <mat-card-title>Conversation category: {{(request$ | async)?.category?.name}}</mat-card-title>
     </div>
     <mat-card-content>
       <br/>
-      <h3><b>Start date:</b> {{(request$ | async)?.startDate | date}} <br/></h3>
-      <h3><b>End date:</b> {{(request$ | async)?.endDate | date}} <br/></h3>
-
-      <span><b>Description:</b> {{(request$ | async)?.freeText}}</span> <br/>
-      <span><b>Place:</b> {{(request$ | async)?.place}}</span><br/>
-      <span><b>Expected expertise:</b> {{(request$ | async)?.expectedExpertise}}</span><br/>
-      <span><b>Declared expertise:</b> {{(request$ | async)?.declaredExpertise}}</span>
+      <div class="detail-font"><span class="detail-font-label">Start date:</span> <span>{{(request$ | async)?.startDate | date}}</span> <br/></div>
+      <hr>
+      <div class="detail-font"><span class="detail-font-label">End date:</span> {{(request$ | async)?.endDate | date}} <br/></div>
+      <hr>
+      <div class="detail-font"><span class="detail-font-label">Description:</span> {{(request$ | async)?.freeText}}</div>
+      <hr>
+      <div class="detail-font"><span class="detail-font-label">Place:</span>  {{(request$ | async)?.place}}</div>
+      <hr>
+      <div class="detail-font"><span class="detail-font-label">Expected expertise:</span> {{(request$ | async)?.expectedExpertise}}</div>
+      <hr>
+      <div class="detail-font"><span class="detail-font-label">Declared expertise:</span> {{(request$ | async)?.declaredExpertise}}</div>
     </mat-card-content>
   </mat-card>
 </div>
