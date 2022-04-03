@@ -22,7 +22,8 @@ export class RequestDetailsComponent implements OnInit {
     expectedExpertise: "BEGINNER",
     declaredExpertise: "EXPERT",
     startDate: new Date(),
-    endDate: new Date()
+    endDate: new Date(),
+    isNegative: true
   };
 
   constructor() { }

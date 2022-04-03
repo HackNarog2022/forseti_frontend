@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Request} from "../shared/request";
 import {Meeting} from "../shared/meeting";
-import {Category} from "../shared/category";
-import {Place} from "../shared/place";
+
 
 @Component({
   selector: 'app-main',
@@ -25,7 +24,8 @@ export class MainComponent implements OnInit {
     expectedExpertise: "Beginner",
     declaredExpertise: "Expert",
     startDate: new Date(),
-    endDate: new Date()
+    endDate: new Date(),
+    isNegative: false
   },
     {
       requestId: "62488d4eb75f3f2e56ac8905",
@@ -41,7 +41,8 @@ export class MainComponent implements OnInit {
       expectedExpertise: "Beginner",
       declaredExpertise: "Expert",
       startDate: new Date(),
-      endDate: new Date()
+      endDate: new Date(),
+      isNegative: true
     }];
 
 

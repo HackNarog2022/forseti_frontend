@@ -62,7 +62,8 @@ export class RequestFormComponent implements OnInit {
       expectedExpertise: this.requestForm.value.expectedExpertise,
       declaredExpertise: this.requestForm.value.declaredExpertise,
       startDate: this.requestForm.value.startDate,
-      endDate: this.requestForm.value.endDate
+      endDate: this.requestForm.value.endDate,
+      isNegative: false
     };
     console.log('Saving request:', request)
     this.requestsService.createRequest(request).subscribe(() => {

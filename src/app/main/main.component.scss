@@ -5,3 +5,9 @@
   width: 20vw;
   //max-height:100%;
 }
+
+::ng-deep {
+  .true .mat-list-option-isNegative{
+    color : red;
+  }
+}
