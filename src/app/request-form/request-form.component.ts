@@ -1,5 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {CategoryService} from "../services/category.service";
+import {Category} from "../shared/category";
+import {RequestsService} from "../services/requests.service";
+import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-request-form',
@@ -9,15 +14,20 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class RequestFormComponent implements OnInit {
   requestForm!: FormGroup;
 
-  possibleExpertises: string[] = ['Beginner', 'Intermediate', 'Expert'];
-  possibleCategories: string[] = ['Sport', 'Politics'];
+  possibleExpertises: string[] = ['BEGINNER', 'INTERMEDIATE', 'EXPERT'];
+  possibleCategories: Category[] = [];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private categoryService: CategoryService,
+    private requestsService: RequestsService,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {
   }
 
   ngOnInit(): void {
     this.requestForm = this.formBuilder.group({
-      userName: [null, [Validators.required]],
       category: [null, Validators.required],
       freeText: [null, Validators.required],
       place: [null, Validators.required],
@@ -26,13 +36,38 @@ export class RequestFormComponent implements OnInit {
       startDate: [null, Validators.required],
       endDate: [null, Validators.required],
     });
+
+    this.categoryService.getAllCategories().subscribe(
+      categories => this.possibleCategories = categories,
+      () => {
+        this.possibleCategories = []
+        console.error("Error fetching categories")
+      }
+    )
   }
 
   submit() {
     if (!this.requestForm.valid) {
+      console.log('form is invalid')
       return;
     }
-    console.log(this.requestForm.value);
+    const request = {
+      requestId: null,
+      user: {id: 'todo'},
+      category: this.requestForm.value.category,
+      freeText: this.requestForm.value.freeText,
+      place: this.requestForm.value.place,
+      expectedExpertise: this.requestForm.value.expectedExpertise,
+      declaredExpertise: this.requestForm.value.declaredExpertise,
+      startDate: this.requestForm.value.startDate,
+      endDate: this.requestForm.value.endDate
+    };
+    console.log('Saving request:', request)
+    this.requestsService.createRequest(request).subscribe(() => {
+      const navigationDetails: string[] = ['/'];
+      this.snackBar.open('Successfully saved request!')
+      this.router.navigate(navigationDetails)
+    })
   }
 
 }
