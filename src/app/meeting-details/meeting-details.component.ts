@@ -23,7 +23,8 @@ export class MeetingDetailsComponent implements OnInit {
     expectedExpertise: "BEGINNER",
     declaredExpertise: "",
     startDate: new Date(),
-    endDate: new Date()
+    endDate: new Date(),
+    isNegative: false
   },
     {
       requestId: "62488d4eb75f3f2e56ac8905",
@@ -39,7 +40,8 @@ export class MeetingDetailsComponent implements OnInit {
       expectedExpertise: "Beginner",
       declaredExpertise: "Expert",
       startDate: new Date(),
-      endDate: new Date()
+      endDate: new Date(),
+      isNegative: false,
     }];
 
   meeting: Meeting = {
