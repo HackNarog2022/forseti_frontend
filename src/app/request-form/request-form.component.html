@@ -7,7 +7,7 @@
       <div class="form-container">
         <form [formGroup]="requestForm" (submit)="submit()">
           <mat-form-field class="form-field">
-            <mat-label>Category</mat-label>
+            <mat-label>Conversation category</mat-label>
             <mat-select formControlName="category">
               <mat-option *ngFor="let category of possibleCategories" [value]="category">
                 {{ category.name }}
@@ -53,7 +53,7 @@
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
 
-          <button mat-raised-button color="primary" type="submit">Let's go!</button>
+          <button mat-raised-button  class="button-color" type="submit">Let's go!</button>
         </form>
       </div>
     </div>

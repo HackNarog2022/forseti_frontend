@@ -1,8 +1,15 @@
+<mat-card class="top">
+  How about meeting someone interesting? Create a new meeting request or wait for one of the pending to be
+  matched!
+</mat-card>
+
 <div class="container" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-around end">
   <div class="inside-card" fxLayout="column" fxLayoutGap="10px">
     <mat-card>
       <div style="text-align:center;">
-        <mat-card-title>Past</mat-card-title>
+        <mat-card-title matTooltip="List of your finished meetings">
+          Past
+        </mat-card-title>
       </div>
       <hr>
       <cdk-virtual-scroll-viewport [itemSize]="18 * 7" class="example-viewport">
@@ -12,7 +19,7 @@
             <mat-selection-list [multiple]="false">
               <mat-list-option *ngFor="let meeting of (pastMeetings$ | async)" [value]="meeting"
                                (click)="openMeeting(meeting)">
-                <span><b>Category: {{meeting.category.name}}</b> <br> Date: {{meeting.date | date }}</span>
+                <span><b>Conversation category: {{meeting.category.name}}</b> <br> Date: {{meeting.date | date }}</span>
                 <hr class="dotted">
               </mat-list-option>
             </mat-selection-list>
@@ -27,7 +34,7 @@
   <div class="inside-card" fxLayout="column" fxLayoutGap="10px">
     <mat-card>
       <div style="text-align:center;">
-        <mat-card-title>Pending</mat-card-title>
+        <mat-card-title matTooltip="List of your meeting requests to be matched">Pending</mat-card-title>
       </div>
       <hr>
       <cdk-virtual-scroll-viewport [itemSize]="18 * 7" class="example-viewport">
@@ -46,7 +53,8 @@
 
         </mat-card-content>
       </cdk-virtual-scroll-viewport>
-      <div class="inside-card" fxLayout="column" fxLayoutGap="10px" align="right" routerLink='/new-request' routerLinkActive='active'>
+      <div class="inside-card" fxLayout="column" fxLayoutGap="10px" align="right" routerLink='/new-request'
+           routerLinkActive='active'>
         <button mat-raised-button aria-label="Add new meeting request" class="button-right button-color">
           <mat-icon>add</mat-icon>
         </button>
@@ -57,7 +65,7 @@
   <div class="inside-card" fxLayout="column" fxLayoutGap="10px">
     <mat-card>
       <div style="text-align:center;">
-        <mat-card-title>Matched</mat-card-title>
+        <mat-card-title  matTooltip="List of your upcoming meetings">Matched</mat-card-title>
       </div>
       <hr>
       <cdk-virtual-scroll-viewport [itemSize]="18 * 7" class="example-viewport">

@@ -38,6 +38,7 @@ import { EntryComponent } from './entry/entry.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatSliderModule} from '@angular/material/slider';
 import {ScrollingModule} from "@angular/cdk/scrolling";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 /**
  * Here we pass the configuration parameters to create an MSAL instance.
@@ -110,7 +111,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MatNativeDateModule,
     FlexModule,
     MatSnackBarModule,
-    ScrollingModule
+    ScrollingModule,
+    MatTooltipModule
   ],
   providers: [
     {
