@@ -31,7 +31,6 @@ export class MainComponent implements OnInit {
       .pipe(take(1));
     this.requests$ = this.requestService.getAllRequests()
       .pipe(take(1));
-
   }
 
   openMeeting(meeting: Meeting) {

@@ -19,7 +19,7 @@
           <div class="inside-card" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="space-around center">
           <h2>Places</h2>
 
-            <mat-grid-list cols="3" class="grid-layout-custom">
+            <mat-grid-list cols="2" class="grid-layout-custom">
               <mat-grid-tile *ngFor="let place of (meeting$ | async)?.suggestedPlaces" >
                 <mat-card class="my-grid-tile">
                   <mat-card-header>
