@@ -20,6 +20,10 @@ export class RequestsService {
     return this.http.get<Request[]>('/api/requests', this.httpOptions);
   }
 
+  getRequest(id: string) {
+    return this.http.get<Request>(`/api/request/${id}`, this.httpOptions);
+  }
+
   createRequest(request: Request) {
     return this.http.post<void>('/api/requests', request, this.httpOptions);
   }
