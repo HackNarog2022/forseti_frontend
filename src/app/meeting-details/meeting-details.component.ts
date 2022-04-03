@@ -20,6 +20,8 @@ export class MeetingDetailsComponent implements OnInit {
   isFinishingButtonVisible$: Observable<boolean> | undefined;
   isGradingVisible$: Observable<boolean> | undefined;
   sliderValue: number | null = null;
+  otherUserGrade$: Observable<number> | undefined;
+
 
   constructor(private route: ActivatedRoute, private meetingService: MeetingService, private authService: MsalService,
               private snackBar: MatSnackBar,
@@ -45,11 +47,18 @@ export class MeetingDetailsComponent implements OnInit {
     let userId = () => this.authService.instance.getActiveAccount()?.homeAccountId;
     this.isGradingVisible$ = this.meeting$.pipe(
       map(m => {
-        console.log(m.ratings);
         return !m.active && (m.ratings == null || Object.keys(m.ratings)
           .filter((k: string) => k != userId())
           .length == 0);
       })
+    )
+
+    let otherUserId$ = this.meeting$!.pipe(map(m => m.requests.find(r => r.user.id != userId())));
+    this.otherUserGrade$ = this.meeting$.pipe(
+      withLatestFrom(otherUserId$),
+      map(([m, otherId]) => otherId?.user?.id && m.ratings[otherId.user.id]),
+      filter(r => r != null),
+      map(r => Number(r!))
     )
   }
 
@@ -62,7 +71,6 @@ export class MeetingDetailsComponent implements OnInit {
 
   changeSliderValue(event: MatSliderChange): void {
     this.sliderValue = event.value;
-
   }
 
   addRating() {

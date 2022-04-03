@@ -1,24 +1,24 @@
-<div class="container" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="space-around center">
+<div class="container" fxLayout="column" fxLayoutGap="20px" style="min-width: 50vw!important;">
       <mat-card>
         <div style="text-align:center;">
-          <mat-card-title>Category: {{(meeting$ | async)?.category?.name}}</mat-card-title>
+          <mat-card-title></mat-card-title>
         </div>
         <mat-card-content>
-          <br/>
-          <div style="text-align:center;">
-          <h3><b>Date:</b> {{(meeting$ | async)?.date | date}} <br/></h3>
+          <div class="inside-card" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="space-around center">
+            <h1>Meeting Info</h1>
+            <div class="detail-font"><span class="detail-font-label">Category:</span><span>{{(meeting$ | async)?.category?.name}}</span></div>
+            <div class="detail-font"><span class="detail-font-label">Date:</span><span>{{(meeting$ | async)?.date | date}} </span></div>
           </div>
           <div class="inside-card" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="space-around center">
-            <h2>Inspirations</h2>
+            <h1>Inspirations</h1>
             <mat-selection-list [multiple]="false">
               <mat-list-option  *ngFor="let inspiration of (meeting$ | async)?.inspirations" [value]="inspiration">
                 <span>{{inspiration}}</span>
               </mat-list-option>
             </mat-selection-list>
           </div>
-          <div class="inside-card" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="space-around center">
-          <h2>Places</h2>
-
+          <div class="inside-card" *ngIf="(meeting$ | async)?.suggestedPlaces?.length" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="space-around center">
+            <h1>Places</h1>
             <mat-grid-list cols="2" class="grid-layout-custom">
               <mat-grid-tile *ngFor="let place of (meeting$ | async)?.suggestedPlaces" >
                 <mat-card class="my-grid-tile">
@@ -53,6 +53,11 @@
             (input)="changeSliderValue($event)"
           ></mat-slider>
           <button mat-raised-button (click)="addRating()">Submit rating</button>
+        </div>
+
+        <div *ngIf="otherUserGrade$ | async" style="text-align:center;">
+          <h1>Your rating</h1>
+          <span>{{ otherUserGrade$ | async }}</span>
         </div>
       </mat-card>
 </div>
