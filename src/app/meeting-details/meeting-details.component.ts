@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {filter, map, shareReplay, switchMap, take} from 'rxjs/operators';
+import {filter, map, shareReplay, switchMap, take, withLatestFrom} from 'rxjs/operators';
 import {MeetingService} from '../services/meeting-service.service';
 import {Meeting} from "../shared/meeting";
 import {MsalService} from "@azure/msal-angular";
-import { MatSliderChange } from '@angular/material/slider';
+import {MatSliderChange} from '@angular/material/slider';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-meeting-details',
@@ -20,7 +21,8 @@ export class MeetingDetailsComponent implements OnInit {
   isGradingVisible$: Observable<boolean> | undefined;
   sliderValue: number | null = null;
 
-  constructor(private route: ActivatedRoute, private meetingService: MeetingService, private authService: MsalService
+  constructor(private route: ActivatedRoute, private meetingService: MeetingService, private authService: MsalService,
+              private snackBar: MatSnackBar,
   ) {
   }
 
@@ -45,8 +47,9 @@ export class MeetingDetailsComponent implements OnInit {
       map(m => {
         console.log(m.ratings);
         return !m.active && (m.ratings == null || Object.keys(m.ratings)
-        .filter((k: string) => k != userId())
-        .length == 0); })
+          .filter((k: string) => k != userId())
+          .length == 0);
+      })
     )
   }
 
@@ -63,13 +66,16 @@ export class MeetingDetailsComponent implements OnInit {
   }
 
   addRating() {
-    if(this.sliderValue) {
+    if (this.sliderValue) {
       let userId = () => this.authService.instance.getActiveAccount()?.homeAccountId;
       let otherUserId$ = this.meeting$!.pipe(map(m => m.requests.find(r => r.user.id != userId())));
       this.meeting$!.pipe(
         take(1), withLatestFrom(otherUserId$),
         switchMap(([m, otherUserId]) => this.meetingService.addRating(m.id, otherUserId!.user.id, this.sliderValue!))
-      ).subscribe(m =>this.meetingId$.next(this.meetingId$.value) );
+      ).subscribe(m => {
+        this.meetingId$.next(this.meetingId$.value);
+        this.snackBar.open(`Successfully rated to ${this.sliderValue}!`, 'Close', {duration: 4000})
+      });
     }
   }
 }
