@@ -7,7 +7,7 @@ import {RequestDetailsComponent} from "./request-details/request-details.compone
 export const routes: Routes = [
   {path: 'main', component: MainComponent},
   {path: 'new-request', component: RequestFormComponent},
-  {path: 'meeting-details', component:MeetingDetailsComponent},
+  {path: 'meeting-details/:id', component:MeetingDetailsComponent},
   {path: 'request-details', component: RequestDetailsComponent},
   {path: '', redirectTo: '/main', pathMatch: 'full'},
 ];

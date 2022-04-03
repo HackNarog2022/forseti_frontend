@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Request} from "../shared/request";
 import {Meeting} from "../shared/meeting";
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { MeetingService } from '../services/meeting-service.service';
 
 
 @Component({
@@ -206,37 +209,21 @@ export class MainComponent implements OnInit {
     }];
 
 
-  matchedMeetings: Meeting[] = [{
-    meetingId: '65af65s6f',
-    date: new Date(),
-    category: {
-      name: "Books",
-      inspirations: []
-    },
-    requests: this.requests,
-    inspirations: ['1Q84 - an interesting book by Haruki Murakami', 'Wuthering Heights - an inspring read by Emily Brontë'],
-    suggestedPlaces: [{
-      placeId: '23456fgh',
-      location: 'Krakow',
-      name: 'Bookly',
-      description: 'Cosy reading space'
-    },
-      {
-        placeId: '23456fgh',
-        location: 'Krakow',
-        name: 'BooksyCafe',
-        description: 'Relaxing cafe with books to read'
-      },
-    ],
-  }
-  ]
+  matchedMeetings$: Observable<Meeting[]> | undefined
 
-  pastMeetings = this.matchedMeetings
+  pastMeetings$: Observable<Meeting[]> | undefined
 
-  constructor() {
+  constructor(private router: Router, private meetingService: MeetingService) {
   }
 
   ngOnInit(): void {
+    this.matchedMeetings$ = this.meetingService.getAllNotDoneUserMeetings();
+    this.pastMeetings$ = this.meetingService.getAllDoneUserMeetings();
+  }
+
+  openMatchedMeeting(meeting: Meeting) {
+    console.log(meeting);
+    this.router.navigate(["/meeting-details/", meeting.id])
   }
 
 }
