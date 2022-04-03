@@ -8,6 +8,6 @@ export const routes: Routes = [
   {path: 'main', component: MainComponent},
   {path: 'new-request', component: RequestFormComponent},
   {path: 'meeting-details/:id', component:MeetingDetailsComponent},
-  {path: 'request-details', component: RequestDetailsComponent},
+  {path: 'request-details/:id', component: RequestDetailsComponent},
   {path: '', redirectTo: '/main', pathMatch: 'full'},
 ];
