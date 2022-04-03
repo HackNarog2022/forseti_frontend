@@ -1,17 +1,17 @@
 <div class="container" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="space-around center">
   <mat-card>
     <div style="text-align:center;">
-      <mat-card-title>Category: {{request.category.name}}</mat-card-title>
+      <mat-card-title>Category: {{(request$ | async)?.category?.name}}</mat-card-title>
     </div>
     <mat-card-content>
       <br/>
-      <h3><b>Start date:</b> {{request.startDate | date}} <br/></h3>
-      <h3><b>End date:</b> {{request.endDate | date}} <br/></h3>
+      <h3><b>Start date:</b> {{(request$ | async)?.startDate | date}} <br/></h3>
+      <h3><b>End date:</b> {{(request$ | async)?.endDate | date}} <br/></h3>
 
-      <span><b>Description:</b> {{request.freeText}}</span> <br/>
-      <span><b>Place:</b> {{request.place}}</span><br/>
-      <span><b>Expected expertise:</b> {{request.expectedExpertise}}</span><br/>
-      <span><b>Declared expertise:</b> {{request.expectedExpertise}}</span>
+      <span><b>Description:</b> {{(request$ | async)?.freeText}}</span> <br/>
+      <span><b>Place:</b> {{(request$ | async)?.place}}</span><br/>
+      <span><b>Expected expertise:</b> {{(request$ | async)?.expectedExpertise}}</span><br/>
+      <span><b>Declared expertise:</b> {{(request$ | async)?.declaredExpertise}}</span>
     </mat-card-content>
   </mat-card>
 </div>

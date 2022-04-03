@@ -9,7 +9,7 @@
         <mat-card-content>
           <div class="inside-card" fxLayout="column" fxLayoutGap="10px">
             <mat-selection-list [multiple]="false">
-              <mat-list-option *ngFor="let meeting of (matchedMeetings$ | async)" [value]="meeting" (click)="openMatchedMeeting(meeting)">
+              <mat-list-option *ngFor="let meeting of (matchedMeetings$ | async)" [value]="meeting" (click)="openMeeting(meeting)">
                 <span><b>{{meeting.category.name}}</b> <br> Date: {{meeting.date | date }} </span>
                 <hr class="dotted">
               </mat-list-option>
@@ -30,7 +30,7 @@
         <mat-card-content>
           <div class="inside-card" fxLayout="column" fxLayoutGap="10px">
             <mat-selection-list [multiple]="false">
-              <mat-list-option style="height:auto" class="" *ngFor="let request of requests" [value]="request">
+              <mat-list-option style="height:auto" class="" *ngFor="let request of (requests$ | async)" [value]="request" (click)="openRequest(request)">
                 <span
                   [style]="request.isNegative ? 'color:red' : null"><b>{{request.category.name}}</b> <br> start date: {{request.startDate | date }}
                   / end date: {{request.endDate | date}}</span>
@@ -55,7 +55,7 @@
 
           <div class="inside-card" fxLayout="column" fxLayoutGap="10px">
             <mat-selection-list [multiple]="false">
-              <mat-list-option *ngFor="let meeting of (pastMeetings$ | async)" [value]="meeting" (click)="openMatchedMeeting(meeting)">
+              <mat-list-option *ngFor="let meeting of (pastMeetings$ | async)" [value]="meeting" (click)="openMeeting(meeting)">
                 <span><b>{{meeting.category.name}}</b> <br> Date: {{meeting.date | date }} </span>
                 <hr class="dotted">
               </mat-list-option>
