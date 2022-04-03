@@ -10,7 +10,8 @@ import {Meeting} from "../shared/meeting";
 })
 export class MainComponent implements OnInit {
 
-  requests: Request[] = [{
+  requests: Request[] = [
+    {
     requestId: "62488d4eb75f3f2e56ac8905",
     user: {
       id: "1",
@@ -28,6 +29,163 @@ export class MainComponent implements OnInit {
     endDate: new Date(),
     isNegative: false
   },
+    {
+      requestId: "62488d4eb75f3f2e56ac8905",
+      user: {
+        id: "1",
+        email: "dadasd@dsadas.pl"
+      },
+      category: {
+        name: "Football",
+        inspirations: []
+      },
+      freeText: "lalallala",
+      place: "online",
+      expectedExpertise: "Beginner",
+      declaredExpertise: "Expert",
+      startDate: new Date(),
+      endDate: new Date(),
+      isNegative: false
+    },
+    {
+      requestId: "62488d4eb75f3f2e56ac8905",
+      user: {
+        id: "1",
+        email: "dadasd@dsadas.pl"
+      },
+      category: {
+        name: "Football",
+        inspirations: []
+      },
+      freeText: "lalallala",
+      place: "online",
+      expectedExpertise: "Beginner",
+      declaredExpertise: "Expert",
+      startDate: new Date(),
+      endDate: new Date(),
+      isNegative: true
+    },    {
+      requestId: "62488d4eb75f3f2e56ac8905",
+      user: {
+        id: "1",
+        email: "dadasd@dsadas.pl"
+      },
+      category: {
+        name: "Football",
+        inspirations: []
+      },
+      freeText: "lalallala",
+      place: "online",
+      expectedExpertise: "Beginner",
+      declaredExpertise: "Expert",
+      startDate: new Date(),
+      endDate: new Date(),
+      isNegative: false
+    },
+    {
+      requestId: "62488d4eb75f3f2e56ac8905",
+      user: {
+        id: "1",
+        email: "dadasd@dsadas.pl"
+      },
+      category: {
+        name: "Football",
+        inspirations: []
+      },
+      freeText: "lalallala",
+      place: "online",
+      expectedExpertise: "Beginner",
+      declaredExpertise: "Expert",
+      startDate: new Date(),
+      endDate: new Date(),
+      isNegative: false
+    },
+    {
+      requestId: "62488d4eb75f3f2e56ac8905",
+      user: {
+        id: "1",
+        email: "dadasd@dsadas.pl"
+      },
+      category: {
+        name: "Football",
+        inspirations: []
+      },
+      freeText: "lalallala",
+      place: "online",
+      expectedExpertise: "Beginner",
+      declaredExpertise: "Expert",
+      startDate: new Date(),
+      endDate: new Date(),
+      isNegative: false
+    },    {
+      requestId: "62488d4eb75f3f2e56ac8905",
+      user: {
+        id: "1",
+        email: "dadasd@dsadas.pl"
+      },
+      category: {
+        name: "Football",
+        inspirations: []
+      },
+      freeText: "lalallala",
+      place: "online",
+      expectedExpertise: "Beginner",
+      declaredExpertise: "Expert",
+      startDate: new Date(),
+      endDate: new Date(),
+      isNegative: false
+    },    {
+      requestId: "62488d4eb75f3f2e56ac8905",
+      user: {
+        id: "1",
+        email: "dadasd@dsadas.pl"
+      },
+      category: {
+        name: "Football",
+        inspirations: []
+      },
+      freeText: "lalallala",
+      place: "online",
+      expectedExpertise: "Beginner",
+      declaredExpertise: "Expert",
+      startDate: new Date(),
+      endDate: new Date(),
+      isNegative: false
+    },    {
+      requestId: "62488d4eb75f3f2e56ac8905",
+      user: {
+        id: "1",
+        email: "dadasd@dsadas.pl"
+      },
+      category: {
+        name: "Football",
+        inspirations: []
+      },
+      freeText: "lalallala",
+      place: "online",
+      expectedExpertise: "Beginner",
+      declaredExpertise: "Expert",
+      startDate: new Date(),
+      endDate: new Date(),
+      isNegative: false
+    },    {
+      requestId: "62488d4eb75f3f2e56ac8905",
+      user: {
+        id: "1",
+        email: "dadasd@dsadas.pl"
+      },
+      category: {
+        name: "Football",
+        inspirations: []
+      },
+      freeText: "lalallala",
+      place: "online",
+      expectedExpertise: "Beginner",
+      declaredExpertise: "Expert",
+      startDate: new Date(),
+      endDate: new Date(),
+      isNegative: false
+    },
     {
       requestId: "62488d4eb75f3f2e56ac8905",
       user: {

@@ -41,7 +41,7 @@ export class AppComponent {
           this.setLoginDisplay();
         }
       });
-    
+
     this.msalBroadcastService.inProgress$
       .pipe(
         filter((status: InteractionStatus) => status === InteractionStatus.None),
