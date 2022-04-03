@@ -1,4 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { switchMap, take } from 'rxjs/operators';
+import { MeetingService } from '../services/meeting-service.service';
 import {Meeting} from "../shared/meeting";
 import {Request} from "../shared/request";
 
@@ -46,35 +50,19 @@ export class MeetingDetailsComponent implements OnInit {
       isNegative: false,
     }];
 
-  meeting: Meeting = {
-    meetingId: '65af65s6f',
-    date: new Date(),
-    category: {
-      name: "Books",
-      inspirations: []
-    },
-    requests: this.requests,
-    inspirations: ['1Q84 - an interesting book by Haruki Murakami', 'Wuthering Heights - an inspring read by Emily Brontë'],
-    suggestedPlaces: [{
-      placeId: '23456fgh',
-      location: 'Krakow',
-      name: 'Bookly',
-      description: 'Cosy reading space'
-    },
-      {
-        placeId: '23456fgh',
-        location: 'Krakow',
-        name: 'BooksyCafe',
-        description: 'Relaxing cafe with books to read'
-      },
-    ],
-  }
+  meeting$: Observable<Meeting> | undefined;
 
-
-  constructor() {
+  constructor(private route: ActivatedRoute, private meetingService: MeetingService) {
   }
 
   ngOnInit(): void {
+    this.meeting$ = this.route.paramMap.pipe(
+      switchMap(params => {
+        let selectedId = params.get('id') ?? "";
+        return this.meetingService.getMeetingById(selectedId);
+      }),
+      take(1)
+    );
   }
 
 }
