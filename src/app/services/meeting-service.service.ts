@@ -38,10 +38,25 @@ export class MeetingService {
   }
 
   setFinished(id: string) {
-    return this.http.post('/api/setFinished/?meetingId=' + id, null);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post('/api/setFinished/?meetingId=' + id, null, httpOptions);
   }
 
   addRating(meetingId: string, userId:string, rating: number) {
-    return this.http.post('/api/addRating/', null, {params:{meetingId, userId, rating}})
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      params:{ 
+        meetingId, 
+        userId, 
+        rating
+      }
+    };
+    return this.http.post('/api/addRating/', null, httpOptions)
   }
 }
