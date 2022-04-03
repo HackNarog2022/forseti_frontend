@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Request} from "../shared/request";
 import {Meeting} from "../shared/meeting";
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { MeetingService } from '../services/meeting-service.service';
-import { RequestsService } from '../services/requests.service';
-import { take } from 'rxjs/operators';
+import {Router} from '@angular/router';
+import {Observable} from 'rxjs';
+import {MeetingService} from '../services/meeting-service.service';
+import {RequestsService} from '../services/requests.service';
+import {take} from 'rxjs/operators';
 import {MsalService} from "@azure/msal-angular";
 
 
@@ -26,9 +26,9 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.matchedMeetings$ = this.meetingService.getAllDoneUserMeetings()
+    this.matchedMeetings$ = this.meetingService.getAllNotDoneUserMeetings()
       .pipe(take(1));
-    this.pastMeetings$ = this.meetingService.getAllNotDoneUserMeetings()
+    this.pastMeetings$ = this.meetingService.getAllDoneUserMeetings()
       .pipe(take(1));
     this.requests$ = this.requestService.getAllRequests()
       .pipe(take(1));
