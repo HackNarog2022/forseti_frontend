@@ -36,6 +36,7 @@ import { FooterComponent } from './footer/footer.component';
 import {FlexModule} from "@angular/flex-layout";
 import { EntryComponent } from './entry/entry.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatSliderModule} from '@angular/material/slider';
 import {ScrollingModule} from "@angular/cdk/scrolling";
 
 /**
@@ -98,6 +99,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MatFormFieldModule,
     MatCheckboxModule,
     MatIconModule,
+    MatSliderModule,
     HttpClientModule,
     FormsModule,
     MsalModule,

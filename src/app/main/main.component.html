@@ -1,5 +1,48 @@
 <div class="container" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-around end">
+  <div class="inside-card" fxLayout="column" fxLayoutGap="10px">
+    <mat-card>
+      <div style="text-align:center;">
+        <mat-card-title>Matched</mat-card-title>
+      </div>
+      <hr>
+      <cdk-virtual-scroll-viewport [itemSize]="18 * 7" class="example-viewport">
+        <mat-card-content>
+          <div class="inside-card" fxLayout="column" fxLayoutGap="10px">
+            <mat-selection-list [multiple]="false">
+              <mat-list-option *ngFor="let meeting of (matchedMeetings$ | async)" [value]="meeting" (click)="openMeeting(meeting)">
+                <span><b>{{meeting.category.name}}</b> <br> Date: {{meeting.date | date }} </span>
+                <hr class="dotted">
+              </mat-list-option>
+            </mat-selection-list>
+          </div>
 
+        </mat-card-content>
+      </cdk-virtual-scroll-viewport>
+    </mat-card>
+  </div>
+  <div class="inside-card" fxLayout="column" fxLayoutGap="10px">
+    <mat-card>
+      <div style="text-align:center;">
+        <mat-card-title>Pending</mat-card-title>
+      </div>
+      <hr>
+      <cdk-virtual-scroll-viewport [itemSize]="18 * 7" class="example-viewport">
+        <mat-card-content>
+          <div class="inside-card" fxLayout="column" fxLayoutGap="10px">
+            <mat-selection-list [multiple]="false">
+              <mat-list-option style="height:auto" class="" *ngFor="let request of (requests$ | async)" [value]="request" (click)="openRequest(request)">
+                <span
+                  [style]="request.isNegative ? 'color:red' : null"><b>{{request.category.name}}</b> <br> start date: {{request.startDate | date }}
+                  / end date: {{request.endDate | date}}</span>
+                <hr class="dotted">
+              </mat-list-option>
+            </mat-selection-list>
+          </div>
+
+        </mat-card-content>
+      </cdk-virtual-scroll-viewport>
+    </mat-card>
+  </div>
 
   <div class="inside-card" fxLayout="column" fxLayoutGap="10px">
     <mat-card>
@@ -12,7 +55,7 @@
 
           <div class="inside-card" fxLayout="column" fxLayoutGap="10px">
             <mat-selection-list [multiple]="false">
-              <mat-list-option *ngFor="let meeting of (matchedMeetings$ | async)" [value]="meeting" (click)="openMatchedMeeting(meeting)">
+              <mat-list-option *ngFor="let meeting of (pastMeetings$ | async)" [value]="meeting" (click)="openMeeting(meeting)">
                 <span><b>{{meeting.category.name}}</b> <br> Date: {{meeting.date | date }} </span>
                 <hr class="dotted">
               </mat-list-option>
@@ -23,59 +66,11 @@
       </cdk-virtual-scroll-viewport>
     </mat-card>
   </div>
-
-  <div class="inside-card" fxLayout="column" fxLayoutGap="10px">
-    <mat-card>
-      <div style="text-align:center;">
-        <mat-card-title>Pending</mat-card-title>
-      </div>
-      <hr>
-      <cdk-virtual-scroll-viewport [itemSize]="18 * 7" class="example-viewport">
-        <mat-card-content>
-          <div class="inside-card" fxLayout="column" fxLayoutGap="10px">
-            <mat-selection-list [multiple]="false">
-              <mat-list-option style="height:auto" class="" *ngFor="let request of requests" [value]="request">
-                <span
-                  [style]="request.isNegative ? 'color:red' : null"><b>Category: {{request.category.name}}</b> <br> start date: {{request.startDate | date }}
-                  / end date: {{request.endDate | date}} </span>
-                <hr class="dotted">
-              </mat-list-option>
-            </mat-selection-list>
-          </div>
-
-        </mat-card-content>
-      </cdk-virtual-scroll-viewport>
-      <div class="inside-card" fxLayout="column" fxLayoutGap="10px" align="right" routerLink='/new-request' routerLinkActive='active'>
-        <button mat-raised-button aria-label="Add new meeting request" class="button-right button-color">
-          <mat-icon>add</mat-icon>
-        </button>
-      </div>
-    </mat-card>
+  <div align="right" routerLink='/new-request' routerLinkActive='active'>
+    <button mat-fab aria-label="Add new meeting request" class="button-right">
+      <mat-icon>add</mat-icon>
+    </button>
   </div>
-
-  <div class="inside-card" fxLayout="column" fxLayoutGap="10px">
-    <mat-card>
-      <div style="text-align:center;">
-        <mat-card-title>Matched</mat-card-title>
-      </div>
-      <hr>
-      <cdk-virtual-scroll-viewport [itemSize]="18 * 7" class="example-viewport">
-        <mat-card-content>
-          <div class="inside-card" fxLayout="column" fxLayoutGap="10px">
-            <mat-selection-list [multiple]="false">
-              <mat-list-option *ngFor="let meeting of (pastMeetings$ | async)" [value]="meeting" (click)="openMatchedMeeting(meeting)">
-                <span><b>Category: {{meeting.category.name}}</b> <br> Date: {{meeting.date | date }} <br> e-mail: {{getBuddyEmail(meeting)}} </span>
-                <hr class="dotted">
-              </mat-list-option>
-            </mat-selection-list>
-          </div>
-
-        </mat-card-content>
-      </cdk-virtual-scroll-viewport>
-    </mat-card>
-  </div>
-
-
 </div>
 
 
