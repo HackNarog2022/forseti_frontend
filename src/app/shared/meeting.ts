@@ -7,6 +7,8 @@ export interface Meeting {
   date: Date,
   category: Category,
   requests: Request[],
+  active: boolean,
   inspirations: string[],
   suggestedPlaces: Place[],
+  ratings: {[key: string]: number}
 }
