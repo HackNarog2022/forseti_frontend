@@ -47,9 +47,6 @@ export class MeetingDetailsComponent implements OnInit {
     date: new Date(),
     category: {
       name: "Books",
-
-
-
       inspirations: []
     },
     requests: this.requests,
