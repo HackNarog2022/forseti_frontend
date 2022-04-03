@@ -16,7 +16,8 @@ export class MeetingDetailsComponent implements OnInit {
   requests: Request[] = [{
     requestId: "62488d4eb75f3f2e56ac8905",
     user: {
-      id: "1"
+      id: "1",
+      email: "lalala@la.pl"
     },
     category: {
       name: "Football",
@@ -27,12 +28,14 @@ export class MeetingDetailsComponent implements OnInit {
     expectedExpertise: "BEGINNER",
     declaredExpertise: "",
     startDate: new Date(),
-    endDate: new Date()
+    endDate: new Date(),
+    isNegative: false
   },
     {
       requestId: "62488d4eb75f3f2e56ac8905",
       user: {
-        id: "2"
+        id: "2",
+        email: "ook.asdasd@d.pl"
       },
       category: {
         name: "Books",
@@ -43,7 +46,8 @@ export class MeetingDetailsComponent implements OnInit {
       expectedExpertise: "Beginner",
       declaredExpertise: "Expert",
       startDate: new Date(),
-      endDate: new Date()
+      endDate: new Date(),
+      isNegative: false,
     }];
 
   meeting$: Observable<Meeting> | undefined;
