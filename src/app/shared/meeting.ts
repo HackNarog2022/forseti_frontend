@@ -3,7 +3,7 @@ import {Request} from "./request";
 import {Place} from "./place";
 
 export interface Meeting {
-  meetingId: string,
+  id: string,
   date: Date,
   category: Category,
   requests: Request[],

@@ -9,7 +9,7 @@
 
           <div class="inside-card" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="space-around center">
             <mat-selection-list [multiple]="false">
-              <mat-list-option *ngFor="let meeting of matchedMeetings" [value]="meeting">
+              <mat-list-option *ngFor="let meeting of (matchedMeetings$ | async)" [value]="meeting" (click)="openMatchedMeeting(meeting)">
                 <span><b>{{meeting.category.name}}</b> <br> Date: {{meeting.date | date }} </span>
               </mat-list-option>
             </mat-selection-list>
@@ -46,7 +46,7 @@
 
           <div class="inside-card" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="space-around center">
             <mat-selection-list [multiple]="false">
-              <mat-list-option *ngFor="let meeting of pastMeetings" [value]="meeting">
+              <mat-list-option *ngFor="let meeting of (pastMeetings$ | async)" [value]="meeting" (click)="openMatchedMeeting(meeting)">
                 <span><b>{{meeting.category.name}}</b> <br> Date: {{meeting.date | date }} </span>
               </mat-list-option>
             </mat-selection-list>
