@@ -11,5 +11,5 @@ export interface Request {
   declaredExpertise: string,
   startDate: Date,
   endDate: Date,
-  isNegative: boolean
+  negative: boolean
 }
