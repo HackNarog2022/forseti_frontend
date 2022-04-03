@@ -18,6 +18,20 @@ body { margin: 0; font-family: norse, sans-serif; }
 
 }
 
+//.spacer{
+//  margin: 10.5em
+//}
+
+.detail-font{
+  font-size: 1.5em;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.detail-font-label{
+  flex-grow: 1;
+}
 
 @font-face {
   font-family: norse;
