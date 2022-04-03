@@ -13,7 +13,8 @@ export class MainComponent implements OnInit {
   requests: Request[] = [{
     requestId: "62488d4eb75f3f2e56ac8905",
     user: {
-      id: "1"
+      id: "1",
+      email: "dadasd@dsadas.pl"
     },
     category: {
       name: "Football",
@@ -30,7 +31,8 @@ export class MainComponent implements OnInit {
     {
       requestId: "62488d4eb75f3f2e56ac8905",
       user: {
-        id: "2"
+        id: "2",
+        email: "sasadsa@das.dpl"
       },
       category: {
         name: "Books",
