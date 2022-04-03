@@ -1,0 +1,20 @@
+<div class="container" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="space-around center">
+  <mat-card>
+    <div style="text-align:center;">
+      <mat-card-title>Category: {{request.category.name}}</mat-card-title>
+    </div>
+    <mat-card-content>
+      <br/>
+      <h3><b>Start date:</b> {{request.startDate | date}} <br/></h3>
+      <h3><b>End date:</b> {{request.endDate | date}} <br/></h3>
+
+      <span><b>Description:</b> {{request.freeText}}</span> <br/>
+      <span><b>Place:</b> {{request.place}}</span><br/>
+      <span><b>Expected expertise:</b> {{request.expectedExpertise}}</span><br/>
+      <span><b>Declared expertise:</b> {{request.expectedExpertise}}</span>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+
