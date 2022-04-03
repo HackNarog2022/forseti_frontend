@@ -217,8 +217,8 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.matchedMeetings$ = this.meetingService.getAllDoneUserMeetings();
-    this.pastMeetings$ = this.meetingService.getAllNotDoneUserMeetings();
+    this.matchedMeetings$ = this.meetingService.getAllNotDoneUserMeetings();
+    this.pastMeetings$ = this.meetingService.getAllDoneUserMeetings();
   }
 
   openMatchedMeeting(meeting: Meeting) {
