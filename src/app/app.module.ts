@@ -12,6 +12,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field'
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -30,6 +31,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {RequestFormComponent} from "./request-form/request-form.component";
 import {MatSelectModule} from "@angular/material/select";
 import {MatNativeDateModule} from "@angular/material/core";
+import { MeetingDetailsComponent } from './meeting-details/meeting-details.component';
 
 /**
  * Here we pass the configuration parameters to create an MSAL instance.
@@ -73,6 +75,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MainComponent,
     RequestsHistoryComponent,
     RequestFormComponent,
+    MeetingDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,6 +87,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MatTableModule,
     MatCardModule,
     MatInputModule,
+    MatGridListModule,
     MatFormFieldModule,
     MatCheckboxModule,
     MatIconModule,
