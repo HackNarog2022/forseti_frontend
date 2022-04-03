@@ -16,12 +16,13 @@ export class RequestsHistoryComponent implements OnInit {
       id: "1"
     },
     category: {
-      name: "Football"
+      name: "Football",
+      inspirations: []
     },
     freeText: "lalallala",
     place: "online",
-    expectedExpertise: 1,
-    declaredExpertise: 1,
+    expectedExpertise: '1',
+    declaredExpertise: '1',
     startDate: new Date(),
     endDate: new Date()
   },
@@ -31,12 +32,13 @@ export class RequestsHistoryComponent implements OnInit {
         id: "2"
       },
       category: {
-        name: "Books"
+        name: "Books",
+        inspirations: []
       },
       freeText: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum",
       place: "Kraków",
-      expectedExpertise: 2,
-      declaredExpertise: 1,
+      expectedExpertise: '2',
+      declaredExpertise: '1',
       startDate: new Date(),
       endDate: new Date()
     }];

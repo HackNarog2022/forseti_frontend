@@ -2,13 +2,13 @@ import {User} from "./user";
 import {Category} from "./category";
 
 export interface Request {
-  requestId: string
+  requestId: string | null
   user: User,
   category: Category,
   freeText: string,
   place: string,
-  expectedExpertise: number,
-  declaredExpertise: number,
+  expectedExpertise: string,
+  declaredExpertise: string,
   startDate: Date,
   endDate: Date
 }

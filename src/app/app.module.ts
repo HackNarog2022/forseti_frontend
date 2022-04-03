@@ -32,6 +32,10 @@ import {RequestFormComponent} from "./request-form/request-form.component";
 import {MatSelectModule} from "@angular/material/select";
 import {MatNativeDateModule} from "@angular/material/core";
 import { MeetingDetailsComponent } from './meeting-details/meeting-details.component';
+import { FooterComponent } from './footer/footer.component';
+import {FlexModule} from "@angular/flex-layout";
+import { EntryComponent } from './entry/entry.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 /**
  * Here we pass the configuration parameters to create an MSAL instance.
@@ -53,7 +57,7 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   protectedResourceMap.set(protectedResources.todoListApi.endpoint, protectedResources.todoListApi.scopes);
 
   return {
-    interactionType: InteractionType.Redirect,
+    interactionType: InteractionType.Popup,
     protectedResourceMap
   };
 }
@@ -76,6 +80,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     RequestsHistoryComponent,
     RequestFormComponent,
     MeetingDetailsComponent,
+    FooterComponent,
+    EntryComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,7 +104,9 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     ReactiveFormsModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    FlexModule,
+    MatSnackBarModule
   ],
   providers: [
     {
