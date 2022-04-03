@@ -55,7 +55,10 @@ export class RequestFormComponent implements OnInit {
     }
     const request = {
       requestId: null,
-      user: {id: this.authService.instance.getActiveAccount()?.localAccountId ?? 'unknown'},
+      user: {
+        id: this.authService.instance.getActiveAccount()?.localAccountId ?? 'unknown',
+        email: this.authService.instance.getActiveAccount()?.username ?? 'unknown'
+      },
       category: this.requestForm.value.category,
       freeText: this.requestForm.value.freeText,
       place: this.requestForm.value.place,
@@ -65,7 +68,7 @@ export class RequestFormComponent implements OnInit {
       endDate: this.requestForm.value.endDate,
       isNegative: false
     };
-    console.log('Saving request:', request)
+
     this.requestsService.createRequest(request).subscribe(() => {
       const navigationDetails: string[] = ['/'];
       this.snackBar.open('Successfully saved request!')

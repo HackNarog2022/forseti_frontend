@@ -12,7 +12,8 @@ export class MeetingDetailsComponent implements OnInit {
   requests: Request[] = [{
     requestId: "62488d4eb75f3f2e56ac8905",
     user: {
-      id: "1"
+      id: "1",
+      email: "lalala@la.pl"
     },
     category: {
       name: "Football",
@@ -29,7 +30,8 @@ export class MeetingDetailsComponent implements OnInit {
     {
       requestId: "62488d4eb75f3f2e56ac8905",
       user: {
-        id: "2"
+        id: "2",
+        email: "ook.asdasd@d.pl"
       },
       category: {
         name: "Books",
