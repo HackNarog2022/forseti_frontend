@@ -36,6 +36,7 @@ import { FooterComponent } from './footer/footer.component';
 import {FlexModule} from "@angular/flex-layout";
 import { EntryComponent } from './entry/entry.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {ScrollingModule} from "@angular/cdk/scrolling";
 
 /**
  * Here we pass the configuration parameters to create an MSAL instance.
@@ -106,7 +107,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MatDatepickerModule,
     MatNativeDateModule,
     FlexModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ScrollingModule
   ],
   providers: [
     {

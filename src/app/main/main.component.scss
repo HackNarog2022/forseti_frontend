@@ -2,7 +2,7 @@
 .card{
   //position:fixed;
   height:50vh;
-  width: 20vw;
+  width: 200px;
   //max-height:100%;
 }
 
@@ -10,4 +10,13 @@
   .true .mat-list-option-isNegative{
     color : red;
   }
+}
+
+.example-viewport {
+  height: 600px;
+  width: 300px;
+}
+
+hr.dotted {
+  border-top: 3px dotted #bbb;
 }
