@@ -71,7 +71,7 @@ export class RequestFormComponent implements OnInit {
 
     this.requestsService.createRequest(request).subscribe(() => {
       const navigationDetails: string[] = ['/'];
-      this.snackBar.open('Successfully saved request!')
+      this.snackBar.open('Successfully saved request!', 'Close', {duration: 4000})
       this.router.navigate(navigationDetails)
     })
   }
