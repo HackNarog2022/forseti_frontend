@@ -25,13 +25,13 @@ import { MsalGuard, MsalInterceptor, MsalBroadcastService, MsalInterceptorConfig
 
 import { msalConfig, loginRequest, protectedResources } from './auth.config';
 import { MainComponent } from './main/main.component';
-import { RequestsHistoryComponent } from './requests-history/requests-history.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {RequestFormComponent} from "./request-form/request-form.component";
 import {MatSelectModule} from "@angular/material/select";
 import {MatNativeDateModule} from "@angular/material/core";
 import { MeetingDetailsComponent } from './meeting-details/meeting-details.component';
+import { RequestDetailsComponent } from './request-details/request-details.component';
 import { FooterComponent } from './footer/footer.component';
 import {FlexModule} from "@angular/flex-layout";
 import { EntryComponent } from './entry/entry.component';
@@ -77,11 +77,11 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   declarations: [
     AppComponent,
     MainComponent,
-    RequestsHistoryComponent,
     RequestFormComponent,
     MeetingDetailsComponent,
     FooterComponent,
     EntryComponent,
+    RequestDetailsComponent,
   ],
   imports: [
     BrowserModule,
