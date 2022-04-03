@@ -5,6 +5,7 @@ import {filter, map, shareReplay, switchMap, take} from 'rxjs/operators';
 import {MeetingService} from '../services/meeting-service.service';
 import {Meeting} from "../shared/meeting";
 import {MsalService} from "@azure/msal-angular";
+import { MatSliderChange } from '@angular/material/slider';
 
 @Component({
   selector: 'app-meeting-details',
@@ -17,7 +18,7 @@ export class MeetingDetailsComponent implements OnInit {
   meeting$: Observable<Meeting> | undefined;
   isFinishingButtonVisible$: Observable<boolean> | undefined;
   isGradingVisible$: Observable<boolean> | undefined;
-
+  sliderValue: number | null = null;
 
   constructor(private route: ActivatedRoute, private meetingService: MeetingService, private authService: MsalService
   ) {
@@ -34,7 +35,6 @@ export class MeetingDetailsComponent implements OnInit {
       switchMap(id => {
         return this.meetingService.getMeetingById(id!);
       }),
-      take(1),
       shareReplay(1)
     );
     this.isFinishingButtonVisible$ = this.meeting$.pipe(
@@ -42,10 +42,11 @@ export class MeetingDetailsComponent implements OnInit {
     );
     let userId = () => this.authService.instance.getActiveAccount()?.homeAccountId;
     this.isGradingVisible$ = this.meeting$.pipe(
-      map(m => !m.active && Object(m.ratings)
-        .keys()
+      map(m => {
+        console.log(m.ratings);
+        return !m.active && (m.ratings == null || Object.keys(m.ratings)
         .filter((k: string) => k != userId())
-        .length == 0)
+        .length == 0); })
     )
   }
 
@@ -56,14 +57,19 @@ export class MeetingDetailsComponent implements OnInit {
     ).subscribe(m => this.meetingId$.next(this.meetingId$.value));
   }
 
-  addRating(event: any): void {
-    console.log(event)
-    // let userId = () => this.authService.instance.getActiveAccount()?.homeAccountId;
-    // let otherUserId$ = this.meeting$!.pipe(map(m => m.requests.find(r => r.user.id != userId())));
-    // this.meeting$!.pipe(
-    //   take(1), withLatestFrom(otherUserId$),
-    //   switchMap((m, otherUserId) => this.meetingService.addRating(m.id, otherUserId, ))
-    // ).subscribe(m =>this.meetingId$.next(this.meetingId$.value) );
+  changeSliderValue(event: MatSliderChange): void {
+    this.sliderValue = event.value;
+
   }
 
+  addRating() {
+    if(this.sliderValue) {
+      let userId = () => this.authService.instance.getActiveAccount()?.homeAccountId;
+      let otherUserId$ = this.meeting$!.pipe(map(m => m.requests.find(r => r.user.id != userId())));
+      this.meeting$!.pipe(
+        take(1), withLatestFrom(otherUserId$),
+        switchMap(([m, otherUserId]) => this.meetingService.addRating(m.id, otherUserId!.user.id, this.sliderValue!))
+      ).subscribe(m =>this.meetingId$.next(this.meetingId$.value) );
+    }
+  }
 }
