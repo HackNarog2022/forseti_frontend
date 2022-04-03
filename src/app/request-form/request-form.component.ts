@@ -5,6 +5,7 @@ import {Category} from "../shared/category";
 import {RequestsService} from "../services/requests.service";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {MsalService} from "@azure/msal-angular";
 
 @Component({
   selector: 'app-request-form',
@@ -22,7 +23,8 @@ export class RequestFormComponent implements OnInit {
     private categoryService: CategoryService,
     private requestsService: RequestsService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private authService: MsalService
   ) {
   }
 
@@ -53,7 +55,7 @@ export class RequestFormComponent implements OnInit {
     }
     const request = {
       requestId: null,
-      user: {id: 'todo'},
+      user: {id: this.authService.instance.getActiveAccount()?.localAccountId ?? 'unknown'},
       category: this.requestForm.value.category,
       freeText: this.requestForm.value.freeText,
       place: this.requestForm.value.place,
