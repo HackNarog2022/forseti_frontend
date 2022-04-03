@@ -26,8 +26,9 @@
         <mat-card-content>
           <div class="inside-card" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="space-around center">
             <mat-selection-list [multiple]="false">
-              <mat-list-option *ngFor="let request of requests" [value]="request">
-                <span><b>{{request.category.name}}</b> </span> <span> start date: {{request.startDate | date }} end date: {{request.endDate | date}}</span>
+              <mat-list-option style="height:auto" *ngFor="let request of requests" [value]="request">
+                <span><b>{{request.category.name}}</b> <br> start date: {{request.startDate | date }}
+                  / end date: {{request.endDate | date}}</span>
               </mat-list-option>
             </mat-selection-list>
           </div>
