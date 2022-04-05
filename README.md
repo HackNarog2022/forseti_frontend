@@ -1,119 +1,64 @@
-# Frontend
+### Tired of your filter bubble? Want to meet someone with different opinion anywhere in the world? Let's create new reality of open-minded people. Select a topic and start a conversation with a stranger.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+## Demo: [https://youtu.be/EwzhlJrdkys](https://youtu.be/EwzhlJrdkys) 
 
-## Development server
+## IaC: https://github.com/HackNarog2022/forseti_azure_configuration
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Inspiration
+We asked ourselves a question - what is the "new reality"? For us the answers were:
+- we live in a filter bubble wanting to talk only with people with the same opinions
+- pandemic really limited the possibility to exchange ideas
+- we started to travel again across the world and want to talk with locals
+- diversity became an important topic and new standards are needed 
 
-## Code scaffolding
+Forseti (the name of the app) comes from Norse mythology (as well as the font used in the app) and it's the name of the god of justice and peace and reconciliation.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## What it does
+As a response to the points from previous section our app lets people to find other ones interested in 
+similar topics with different or the same level of domain knowledge and exchange ideas through a meeting. Moreover it suggests questions and readings to make conversation more fluent and natural.  We don't ask about gender, age, religion, nationality and your beliefs, we just want you to reach people from all around the world and exchange ideas.  
 
-## Build
+Tenets:
+- make people more open
+- promote diversity
+- expand our knowledge 
+- broaden your horizons
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+so in 4 words: Go beyond your reality!
 
-## Running unit tests
+Usage is so simple:
+- Create a request about what you want to talk
+- Wait for a person matching your request
+- Write an email, discuss and meet!
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Stay safe! Our app prevents from receiving hostile message with the use of AI (hostile requests are blocked) and users rating system.
 
-## Running end-to-end tests
+## How we built it
+Leveraging knowledge from many widely-known, big IT companies, state-of-the-art technologies, endless discussions and what's most important - teamwork and pair programming
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Challenges we ran into
+- frontend development when you you didn't touch it for a while
+- granular permissions of Azure B2C
+- B2C is easy for ASP .NET - we wanted to make it for Spring
 
-## Further help
+## Accomplishments that we're proud of
+- we would really see it as real-life solution
+- monetization idea (sponsored suggested places to meet, sponsored topics to discuss, premium account - allows for having more than 5 meetings in a month and 5 concurrent requests)
+- probably the only app in the hackaton that has fully operating users management system (Azure B2C)
+- app is fully deployed (continuous delivery!): https://forsetihacknarog.azurewebsites.net. We are not afraid - feel free to try it out. Create a user and meet!
+- it looks well, having in mind that was designed by 4 typical programmers
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# frontend
+## What we learned
+In our field of study continuous development is of significant importance, this weekend the points are: 
+- Azure B2C is pretty powerful, has really granular permissions and it's painful to forget about even one
+- rediscovered how to center a button in html (sentiment analysis was easier)
+- despite each of us works in a different technology daily we realized that Java is the one that everyone knows quite well
+- wide range of ML services provided by the clouds
+- 4 typical backend programmers (in flannel shirts) can create not so bad UI  
 
+## What's next for Forseti
+- wide database of materials, reading, experts, questions, topics
+- tests if you are really a domain expert
+- security and verification of users
 
-
-## Getting started
-
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.com/hacknarog2022/frontend.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://gitlab.com/hacknarog2022/frontend/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+## Tech Stack
+Because of awesomeness of cloud computing we decided to heavily leverage Azure cloud services: business-2-customers (B2C), sentiment analysis, database, deployment. Because of the limited time we used widely known Spring backend and Angular frontend, with which everyone was a bit familiar. But despite a short time we didn't abandoned software engineering basics like CI/CD. Architecture is pretty easy - a single frontend and a scalable backend.
